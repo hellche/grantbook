@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Переменные и гипотезы | Гранты РНФ</title>
+  <meta name="description" content="2 Переменные и гипотезы | Гранты РНФ" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Переменные и гипотезы | Гранты РНФ" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Переменные и гипотезы | Гранты РНФ" />
+  
+  
+  
+
+<meta name="author" content="" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="описатеьные-статистики.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.13/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a>Гранты РНФ</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Что мы делаем</a></li>
+<li class="chapter" data-level="2" data-path="переменные-и-гипотезы.html"><a href="переменные-и-гипотезы.html"><i class="fa fa-check"></i><b>2</b> Переменные и гипотезы</a><ul>
+<li class="chapter" data-level="2.1" data-path="переменные-и-гипотезы.html"><a href="переменные-и-гипотезы.html#что-такое-y"><i class="fa fa-check"></i><b>2.1</b> Что такое <em>y</em></a></li>
+<li class="chapter" data-level="2.2" data-path="переменные-и-гипотезы.html"><a href="переменные-и-гипотезы.html#что-может-обяснять-y"><i class="fa fa-check"></i><b>2.2</b> Что может обяснять <em>y</em></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="описатеьные-статистики.html"><a href="описатеьные-статистики.html"><i class="fa fa-check"></i><b>3</b> Описатеьные статистики</a><ul>
+<li class="chapter" data-level="3.1" data-path="описатеьные-статистики.html"><a href="описатеьные-статистики.html#о-данных"><i class="fa fa-check"></i><b>3.1</b> О данных</a></li>
+<li class="chapter" data-level="3.2" data-path="описатеьные-статистики.html"><a href="описатеьные-статистики.html#описательные-статистики"><i class="fa fa-check"></i><b>3.2</b> Описательные статистики</a></li>
+<li class="chapter" data-level="3.3" data-path="описатеьные-статистики.html"><a href="описатеьные-статистики.html#дурацкая-таблица"><i class="fa fa-check"></i><b>3.3</b> Дурацкая таблица</a></li>
+<li class="chapter" data-level="3.4" data-path="описатеьные-статистики.html"><a href="описатеьные-статистики.html#таблица-получше"><i class="fa fa-check"></i><b>3.4</b> Таблица получше</a></li>
+<li class="chapter" data-level="3.5" data-path="описатеьные-статистики.html"><a href="описатеьные-статистики.html#боксплоты"><i class="fa fa-check"></i><b>3.5</b> Боксплоты</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="карты.html"><a href="карты.html"><i class="fa fa-check"></i><b>4</b> Карты</a></li>
+<li class="chapter" data-level="5" data-path="модели.html"><a href="модели.html"><i class="fa fa-check"></i><b>5</b> Модели</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Гранты РНФ</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="переменные-и-гипотезы" class="section level1">
+<h1><span class="header-section-number">2</span> Переменные и гипотезы</h1>
+<div id="что-такое-y" class="section level2">
+<h2><span class="header-section-number">2.1</span> Что такое <em>y</em></h2>
+<ol style="list-style-type: decimal">
+<li><del>Грантов по годам на 10 000 исследователей (2014, 2015…2019)</del></li>
+<li><del>Грантов за период на 10 000 исследователей (два периода: 2014-2016, 2017-2019)</del></li>
+<li>Доля грантов <del>по годам и</del> по двум периодам</li>
+</ol>
+<p><em>Примечание: оставляем 3. Нормируем не исследователями, а долей, чтобы не тратить потенциальный x</em></p>
+</div>
+<div id="что-может-обяснять-y" class="section level2">
+<h2><span class="header-section-number">2.2</span> Что может обяснять <em>y</em></h2>
+<p>И основные гипотези и контрольные переменные, пока всё в кучу.</p>
+<hr />
+<p><strong>H1: Деньги к деньгам</strong> – если регион в период <em>t</em> тратил деньги на науку, то в период <em>t+1</em> у него будет больше грантов РНФ.</p>
+<p>Возможные переменные:</p>
+<ol style="list-style-type: decimal">
+<li>Доля ВРП на R&amp;D (период: 2013-2018) (источник: Росстат. Регоионы России) <span style="color: #ff66cc;">есть всё</span></li>
+<li>Четрыре пепеменные по финансированию из фед бюджета (период: 2015-2019) (источник: форма наука-2) <span style="color: #ff66cc;">есть 2018</span>
+<ul>
+<li>на фундаментальный исследования</li>
+<li>на прикладные исследования</li>
+<li>другие гранты</li>
+<li>другое финансирование</li>
+</ul></li>
+</ol>
+<p><em>Примечание: 2 в деньгах, в логарифмах?</em></p>
+<hr />
+<p><strong>H2: Человеческие ресурсы</strong> – если в регионе в период <em>t</em> большое число публикаций, то в период <em>t+1</em> у него будет больше грантов РНФ.</p>
+<p>Возможные переменные:</p>
+<ol style="list-style-type: decimal">
+<li>Доля публикаций в Scopus (период: ?) (источник: Дашин датасет, надо города раскидать по регионам) <span style="color: #ff66cc;">уточнить</span></li>
+<li>Число докторов наук (период: 2013-2018) (источник: Росстат. Регоионы России) <span style="color: #ff66cc;">есть всё</span></li>
+<li>Число кандидатов наук (период: 2013-2018) (источник: Росстат. Регоионы России) <span style="color: #ff66cc;">есть всё</span></li>
+</ol>
+<p><em>Примечание: 2 и 3 нормировать на население?</em></p>
+<hr />
+<p><strong>H3: Инфрастуктура</strong> – если в регионе есть “особый университет” (5:100), в нем будет больше грантов РНФ.</p>
+<p>Возможные переменные:</p>
+<ol style="list-style-type: decimal">
+<li>Дамми на унивеситет из 5:100 (<a href="https://www.5top100.ru/universities/">список тут</a>) <span style="color: #ff66cc;">есть всё</span></li>
+</ol>
+<p><em>Примечание: скорее всего скореллированно с предыдущими переменными</em></p>
+<hr />
+<p><strong>H4: Гранты к грантам</strong> – если регион в период <em>t</em> получил много грантов, то в период <em>t+1</em> у него тоже будет много грантов РНФ.</p>
+<p>Возможные переменные:</p>
+<ol style="list-style-type: decimal">
+<li>Доля региона в пероиод 2014-2016 (когда <em>у</em> это доля региона в пероиод 2017-2019) <span style="color: #ff66cc;">есть</span></li>
+</ol>
+<p><em>Примечание: это что такое вообще? просто автокорреляция же? играем во веменные ряды на двух периодах? номрально ли это?</em></p>
+<hr />
+<p><strong>H5: Пространственный эффект</strong> – регион <em>i</em> граничит с регионом <em>j</em>. В период <em>t</em> регион <em>i</em> получил много грантов, тогда в период <em>t+1</em> регионом <em>j</em> тоже получит много грантов. <span style="color: #ff66cc;">опровергнуто катрой</span></p>
+<p><em>Примечание: Для начала посмотреть карту? + <a href="https://tsamsonov.github.io/r-geo-course/autocorrelation.html">Индекс Морана</a>?</em></p>
+<hr />
+<p><strong>H6: Диверсификация имеет значение</strong> – контроль на кол-во исследовательских организаций + чем регион преимущественно занимается.</p>
+<p>Возможные переменные:</p>
+<ol style="list-style-type: decimal">
+<li>Придумать дайверсити индекс для региона на основе данных РИНЦ (период:?) (источник: Дашин датасет) <span style="color: #ff66cc;">уточнить</span></li>
+</ol>
+<hr />
+<p><strong>Заметки на полях</strong>: Откуда эксперты, кто принимает решение? Есть ли регионе человек из экспертного совета?</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="описатеьные-статистики.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

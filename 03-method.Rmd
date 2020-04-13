@@ -1,3 +1,120 @@
-# Methods
+# Описатеьные статистики
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+```{r warning=FALSE, include=FALSE, message=FALSE}
+library(knitr)
+library(kableExtra)
+library(dplyr)
+library(readr)
+library(fBasics)
+library(formattable)
+library(plotrix)
+```
 
-We describe our methods in this chapter.
+## О данных
+В датасете исправлены ошибки и сделаны en_названия регионов. Те full_table_7_04.csv финальный датасет со всем-всем + доп колонки с росстата. NA заменены на нули. Мое + Алексей. Надо объединить кодбук. Все преобразования датасета в файле scr1.R
+```{r warning=FALSE,  include=FALSE, message=FALSE}
+df <- read_csv("~/Desktop/Applied_Geography/rnf_model/grantbook/data/full_table_7_04.csv")
+#write.csv(alexey_database, "alexey_database.csv",row.names = TRUE, fileEncoding = "UTF-8" )
+```
+
+## Описательные статистики
+```{r warning=FALSE}
+df_cut_stat <- df %>% 
+  select(35:40)
+df_cut_stat[df_cut_stat==0] <- NA
+J <- basicStats(df_cut_stat)
+J <- data.frame(t(J))
+formattable(J, digits = 2) %>% select(1:9)
+#write.csv(J, "descr_stat.csv",row.names = TRUE, fileEncoding = "UTF-8" )
+```
+
+## Дурацкая таблица
+```{r warning=FALSE}
+# возвращаемся к df_cut_share
+df_color <- df %>% 
+  mutate(change2015 = sh_2015-sh_2014,
+         change2016 = sh_2016-sh_2015,
+         change2017 = sh_2017-sh_2016,
+         change2018 = sh_2018-sh_2017,
+         change2019 = sh_2019-sh_2018) %>% 
+  mutate_if(is.numeric, round, digits = 5)
+
+#write.csv(df_color, "df_color.csv",row.names = TRUE, fileEncoding = "UTF-8" )
+```
+
+```{r warning=FALSE}
+
+formattable(df_color, list(
+  `sh_2015`= formatter("span", style = ~ style(color = ifelse(`sh_2015` >`sh_2014`, "green", "red")),
+                    ~ icontext(ifelse(`sh_2015` >`sh_2014`,"arrow-up", "arrow-down"), `sh_2015`)),
+  `sh_2016`= formatter("span", style = ~ style(color = ifelse(`sh_2016` >`sh_2015`, "green", "red")),
+                       ~ icontext(ifelse(`sh_2016` >`sh_2015`,"arrow-up", "arrow-down"), `sh_2016`)),
+  `sh_2017`= formatter("span", style = ~ style(color = ifelse(`sh_2017` >`sh_2016`, "green", "red")),
+                       ~ icontext(ifelse(`sh_2017` >`sh_2016`,"arrow-up", "arrow-down"), `sh_2017`)),
+  `sh_2018`= formatter("span", style = ~ style(color = ifelse(`sh_2018` >`sh_2017`, "green", "red")),
+                       ~ icontext(ifelse(`sh_2018` >`sh_2017`,"arrow-up", "arrow-down"), `sh_2018`)),
+  `sh_2019`= formatter("span", style = ~ style(color = ifelse(`sh_2019` >`sh_2018`, "green", "red")),
+                       ~ icontext(ifelse(`sh_2019` >`sh_2018`,"arrow-up", "arrow-down"), `sh_2019`)))) %>%
+  select(3, starts_with("sh_2")) 
+
+```
+## Таблица получше
+```{r warning=FALSE, message=FALSE}
+#colnames(df_color)
+
+f <- formattable(df_color, list(
+  `second_period`= formatter("span", style = ~ style(color = ifelse(`second_period` >`first_period`, "green", "red")),
+                    ~ icontext(ifelse(`second_period` >`first_period`,"arrow-up", "arrow-down"), `second_period`)))) %>%
+  select(3, 68, 69) 
+as.datatable(f)
+
+```
+
+## Боксплоты
+```{r warning=FALSE}
+# long 85 * 6 = 510
+library(tidyr)
+
+data_long <- df %>% select(3, region_id,starts_with("rnf20"))
+data_long <- gather(data_long, condition, measurement, rnf2014:rnf2019, factor_key=TRUE)
+data_long <- data_long %>% mutate(condition = gsub("[^0-9.-]+", "", condition))
+data_long <- data_long %>%
+  mutate(measurement = if_else(is.na(measurement), 0, measurement))
+
+data_long <- as.data.frame(data_long)
+
+data_long_cut_11_12_38 <- data_long %>% 
+  dplyr::filter(region_id != 11) %>% 
+  dplyr::filter(region_id != 12) %>% 
+  dplyr::filter(region_id != 38) 
+
+data_long_cut_11_12_38_plus <- data_long_cut_11_12_38 %>% 
+  dplyr::filter(region_id != 33) %>% 
+  dplyr::filter(region_id != 36) %>% 
+  dplyr::filter(region_id != 60) %>% 
+  dplyr::filter(region_id != 68) %>% 
+  dplyr::filter(region_id != 73) 
+
+
+par(mfcol=c(2,2), oma=c(0,0,2,0))
+boxplot(data_long$measurement ~ data_long$region_id,
+        xlab = "Все регионы",
+        ylab = "Гранты в шт") # 11, 12, 38
+boxplot(data_long_cut_11_12_38$measurement ~ data_long_cut_11_12_38$region_id,
+        xlab = "Без Топ-3",
+        ylab = "Гранты в шт")  # 33 36 60 68 73
+boxplot(data_long_cut_11_12_38_plus$measurement ~ data_long_cut_11_12_38_plus$region_id,
+        xlab = "Без ТОП-8",
+        ylab = "Гранты в шт")
+mtext("Распределение грантов РНФ по регионам России за 2014-2019", line=0, side=3, outer=TRUE, cex=-10)
+
+```
+
+Далее идет скрипт в scr1.R со слов стрчки 210 # добавим доп таболицу с росстата 
+
+
+
+
+

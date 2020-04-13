@@ -1,0 +1,3495 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Дурацкая таблица | bookdown-demo.utf8</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Дурацкая таблица | bookdown-demo.utf8" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Дурацкая таблица | bookdown-demo.utf8" />
+  
+  
+  
+
+<meta name="author" content="" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="описательные-статистики.html"/>
+<link rel="next" href="таблица-получше.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.13/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a>Гранты РНФ</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Что мы делаем</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="переменные-и-гипотезы.html"><a href="переменные-и-гипотезы.html"><i class="fa fa-check"></i><b>3</b> Переменные и гипотезы</a><ul>
+<li class="chapter" data-level="3.1" data-path="переменные-и-гипотезы.html"><a href="переменные-и-гипотезы.html#что-такое-y"><i class="fa fa-check"></i><b>3.1</b> Что такое <em>y</em></a></li>
+<li class="chapter" data-level="3.2" data-path="переменные-и-гипотезы.html"><a href="переменные-и-гипотезы.html#что-может-обяснять-y"><i class="fa fa-check"></i><b>3.2</b> Что может обяснять <em>y</em></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="о-данных.html"><a href="о-данных.html"><i class="fa fa-check"></i><b>4</b> О данных</a></li>
+<li class="chapter" data-level="5" data-path="описательные-статистики.html"><a href="описательные-статистики.html"><i class="fa fa-check"></i><b>5</b> Описательные статистики</a></li>
+<li class="chapter" data-level="6" data-path="дурацкая-таблица.html"><a href="дурацкая-таблица.html"><i class="fa fa-check"></i><b>6</b> Дурацкая таблица</a></li>
+<li class="chapter" data-level="7" data-path="таблица-получше.html"><a href="таблица-получше.html"><i class="fa fa-check"></i><b>7</b> Таблица получше</a></li>
+<li class="chapter" data-level="8" data-path="боксплоты.html"><a href="боксплоты.html"><i class="fa fa-check"></i><b>8</b> Боксплоты</a></li>
+<li class="chapter" data-level="9" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>9</b> Applications</a><ul>
+<li class="chapter" data-level="9.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>9.1</b> Example one</a></li>
+<li class="chapter" data-level="9.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>9.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>10</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="дурацкая-таблица" class="section level1">
+<h1><span class="header-section-number">6</span> Дурацкая таблица</h1>
+<table class="table table-condensed">
+<thead>
+<tr>
+<th style="text-align:right;">
+region_rus_from_map
+</th>
+<th style="text-align:right;">
+sh_2014
+</th>
+<th style="text-align:right;">
+sh_2015
+</th>
+<th style="text-align:right;">
+sh_2016
+</th>
+<th style="text-align:right;">
+sh_2017
+</th>
+<th style="text-align:right;">
+sh_2018
+</th>
+<th style="text-align:right;">
+sh_2019
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+Алтайский край
+</td>
+<td style="text-align:right;">
+0.00179
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00112
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00183
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00138
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00286
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Амурская область
+</td>
+<td style="text-align:right;">
+0.00179
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00138
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Архангельская область
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00478
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00244
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00276
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00048
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Астраханская область
+</td>
+<td style="text-align:right;">
+0.00089
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00061
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00069
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Белгородская область
+</td>
+<td style="text-align:right;">
+0.00536
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00718
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00224
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00427
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00553
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00859
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Брянская область
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00112
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00061
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00048
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Чеченская республика
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Челябинская область
+</td>
+<td style="text-align:right;">
+0.00446
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.01675
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00448
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00244
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00968
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00334
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Чукотский АОк
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Чувашская Республика
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00239
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00061
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00069
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Еврейская АОб
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00112
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00048
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+г. Москва
+</td>
+<td style="text-align:right;">
+0.47679
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.32057
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.44058
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.4536
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.35176
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.39475
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+г. Санкт-Петербург
+</td>
+<td style="text-align:right;">
+0.11696
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.0933
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.12892
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.13309
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.14098
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.1537
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+г. Севастополь
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00239
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00122
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00138
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00048
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Иркутская область
+</td>
+<td style="text-align:right;">
+0.00893
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00957
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.01009
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00733
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.01106
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.01098
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Ивановская область
+</td>
+<td style="text-align:right;">
+0.00357
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00478
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00224
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00488
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00207
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00382
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Кабардино-Балкарская Республика
+</td>
+<td style="text-align:right;">
+0.00089
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Калининградская область
+</td>
+<td style="text-align:right;">
+0.00268
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00239
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00224
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00305
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00276
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.0043
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Калужская область
+</td>
+<td style="text-align:right;">
+0.00357
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00239
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00336
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00122
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00138
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00143
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Камчатский край
+</td>
+<td style="text-align:right;">
+0.00179
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00239
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00336
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00061
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00138
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00048
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Карачаево-Черкессия Республика
+</td>
+<td style="text-align:right;">
+0.00179
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00122
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00069
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00095
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Кемеровская область
+</td>
+<td style="text-align:right;">
+0.00179
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00957
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00224
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00305
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00346
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00191
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Хабаровский край
+</td>
+<td style="text-align:right;">
+0.00089
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00239
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00448
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00183
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00138
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00239
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Ханты-Мансийский АОк
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Кировская область
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00207
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00048
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Костромская область
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00718
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00069
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Краснодарский край
+</td>
+<td style="text-align:right;">
+0.00179
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00718
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00366
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00069
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00286
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Красноярский край
+</td>
+<td style="text-align:right;">
+0.01607
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00718
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.01009
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00672
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00898
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.0105
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Курганская область
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00112
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Курская область
+</td>
+<td style="text-align:right;">
+0.00089
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00478
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00061
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00069
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00095
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Ленинградская область
+</td>
+<td style="text-align:right;">
+0.00357
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00336
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00366
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00138
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00334
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Липецкая область
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00138
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Магаданская область
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Московская область
+</td>
+<td style="text-align:right;">
+0.04464
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.02871
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.05381
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.04151
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.04838
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.04821
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Мурманская область
+</td>
+<td style="text-align:right;">
+0.00268
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00239
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00224
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00183
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00138
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00239
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Ненецкий АОк
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Нижегородская область
+</td>
+<td style="text-align:right;">
+0.02946
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.05981
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.04148
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.04274
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.0463
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.03628
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Новгородская область
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00478
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00112
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00069
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00048
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Новосибирская область
+</td>
+<td style="text-align:right;">
+0.09107
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.09569
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.09753
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.09219
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.0933
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.09547
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Омская область
+</td>
+<td style="text-align:right;">
+0.00268
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00239
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00336
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00427
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00138
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00191
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Оренбургская область
+</td>
+<td style="text-align:right;">
+0.00268
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00112
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00244
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00048
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Орловская область
+</td>
+<td style="text-align:right;">
+0.00089
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00112
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00122
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00207
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00095
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Пензенская область
+</td>
+<td style="text-align:right;">
+0.00268
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00478
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00244
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00069
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00048
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Пермский край
+</td>
+<td style="text-align:right;">
+0.00804
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.01675
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00673
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00855
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.01589
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00716
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Приморский край
+</td>
+<td style="text-align:right;">
+0.02232
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.01196
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.01009
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.01282
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.01451
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.01146
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Псковская область
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Адыгея
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00239
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Алтай
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Башкортостан
+</td>
+<td style="text-align:right;">
+0.00625
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.01435
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.01121
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00855
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.01106
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.01193
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Бурятия
+</td>
+<td style="text-align:right;">
+0.00446
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00239
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00183
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00069
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00095
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Дагестан
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00239
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00069
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Ингушетия
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Калмыкия
+</td>
+<td style="text-align:right;">
+0.00089
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00239
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00069
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00048
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Карелия
+</td>
+<td style="text-align:right;">
+0.00268
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00478
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00112
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00427
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00138
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00143
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Хакасия
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Коми
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00112
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00122
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00138
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00143
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Крым
+</td>
+<td style="text-align:right;">
+0.00089
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00276
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00334
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Марий Эл
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00239
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00112
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00207
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00048
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Мордовия
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00478
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00061
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00207
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00048
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Саха
+</td>
+<td style="text-align:right;">
+0.00268
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00718
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00183
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00138
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00191
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Северная Осетия-Алания
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00095
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Татарстан
+</td>
+<td style="text-align:right;">
+0.02054
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.03828
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.02354
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.02808
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.03179
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.0358
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Республика Тыва
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Ростовская область
+</td>
+<td style="text-align:right;">
+0.01339
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.02153
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.01457
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.01038
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.01451
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.01337
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Рязанская область
+</td>
+<td style="text-align:right;">
+0.00179
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00239
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00244
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00138
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00143
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Сахалинская область
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Самарская область
+</td>
+<td style="text-align:right;">
+0.00089
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00718
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00336
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00488
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00622
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00764
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Саратовская область
+</td>
+<td style="text-align:right;">
+0.00714
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.01435
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.01121
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.01038
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.01037
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.01002
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Смоленская область
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00239
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00069
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00048
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Ставропольский край
+</td>
+<td style="text-align:right;">
+0.00089
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00061
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00069
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00191
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Свердловская область
+</td>
+<td style="text-align:right;">
+0.02768
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.03589
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.03475
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.02503
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.04423
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.03007
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Тамбовская область
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.01675
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00224
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00122
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00415
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00143
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Томская область
+</td>
+<td style="text-align:right;">
+0.02946
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.05024
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.03587
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.03907
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.06012
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.042
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Тульская область
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00061
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00069
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Тверская область
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00478
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00122
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00207
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00191
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Тюменская область
+</td>
+<td style="text-align:right;">
+0.00268
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00336
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00061
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00138
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00239
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Удмуртская Республика
+</td>
+<td style="text-align:right;">
+0.00179
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00957
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00224
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00061
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00346
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00191
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Ульяновская область
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00112
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00061
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00069
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00095
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Владимирская область
+</td>
+<td style="text-align:right;">
+0.00089
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00112
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00061
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00069
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Волгоградская область
+</td>
+<td style="text-align:right;">
+0.00268
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00478
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00336
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00415
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00286
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Вологодская область
+</td>
+<td style="text-align:right;">
+0.00089
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00112
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00095
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Воронежская область
+</td>
+<td style="text-align:right;">
+0.00357
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00718
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00336
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00488
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00346
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00573
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Ямало-Ненецкий АОк
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Ярославская область
+</td>
+<td style="text-align:right;">
+0.00446
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00718
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00224
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00183
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00415
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0.00095
+</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Забайкальский край
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: green">
+<i class="glyphicon glyphicon-arrow-up"></i>
+0.00112
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">
+<i class="glyphicon glyphicon-arrow-down"></i>
+0
+</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="описательные-статистики.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="таблица-получше.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

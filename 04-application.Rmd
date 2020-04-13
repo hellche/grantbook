@@ -1,7 +1,160 @@
-# Applications
+# Карты
 
-Some _significant_ applications are demonstrated in this chapter.
+ЗАЧЕМ ВСЁ ЭТО? ⬇️
 
-## Example one
+Идея – идти от двух гипотез:
 
-## Example two
+1. **гранты к грантам** – в периоде _t-1_ (2014-2016) в регионе были гранты –> в периоде _t_ (2017-2019) в регионе также будут гранты. <span style="color: #ff66cc;">Результат: более менее прослеживается и на картах, но на самом деле ничего выдающегося, поэтому в мусор (визуализацию картой)</span> 
+
+2. **гранты к гранитам в пространстве** – если регион A граничит с регионом B, при этом в регионе A есть гранты, то у соседа тоже будут. <span style="color: #ff66cc;">Результат: гипротеза картой опровергается, а значит те пространственные эконометрические модели, которые я думала сюда прикрутить тоже в мусор</span> 
+
+```{r warning=FALSE, include=FALSE, message=FALSE}
+library(ggplot2)
+library(sf)
+library(viridis)
+library(grid)
+library(gridExtra)
+library(RColorBrewer)
+library(rstudioapi)
+library(stringi)
+library(dplyr)
+library(readr)
+library(ggforce)
+
+```
+
+```{r warning=FALSE,  include=FALSE}
+lwdp = 0.05
+projection =3576 #EPSG code
+common = theme_classic()+
+  theme(axis.line = element_blank(), 
+        axis.text.x = element_blank(), 
+        axis.text.y = element_blank(),
+        axis.ticks = element_blank(), 
+        axis.title.x = element_blank(), 
+        axis.title.y = element_blank(),
+        legend.position="top",
+        legend.text = element_text(size =6),
+        legend.title = element_text(size =12),
+        legend.key.size = unit(0.4, "cm"))
+
+```
+
+```{r warning=FALSE, include=FALSE}
+#Map of Russian Federation was obtained from GADM:
+#https://gadm.org/download_country_v3.html
+rus.map.init <- readRDS("data/gadm36_RUS_1_sf.rds")
+ukr.map <- readRDS("data/gadm36_UKR_1_sf.rds")
+##subset Crimea
+Crimea.map <- ukr.map[ukr.map$NAME_1 %in% c("Crimea","Sevastopol'"),]
+Crimea.map$NL_NAME_1<-c("Республика Крым","г. Севастополь")
+####
+rus.map<-rbind(rus.map.init, Crimea.map)
+##correcting wrong names in the map
+rus.map$NL_NAME_1[rus.map$NL_NAME_1 == "Пермская край"] <- "Пермский край"
+rus.map$NL_NAME_1[rus.map$NL_NAME_1 == "Камчатская край"] <- "Камчатский край"
+rus.map$NL_NAME_1[rus.map$NL_NAME_1 == "Республика Чечено-Ингушская"] <- "Чеченская республика"
+rus.map$NL_NAME_1[rus.map$NL_NAME_1 == "Респу́блика Ингуше́тия"] <- "Республика Ингушетия"
+rus.map$NL_NAME_1[rus.map$NL_NAME_1 == "Санкт-Петербург (горсовет)"] <-"г. Санкт-Петербург"
+rus.map$NL_NAME_1[rus.map$NL_NAME_1 == "Eврейская АОб"] <-"Еврейская АОб"
+rus.map$NL_NAME_1[is.na(rus.map$NL_NAME_1)] <-"г. Москва"
+```
+
+```{r warning=FALSE, include=FALSE }
+result_2 <- read_delim("data/result_2.csv", 
+    ";", escape_double = FALSE, trim_ws = TRUE)
+```
+
+Если просто нанести все гранты на карту, то ничего инетеренсого не видно, так как распределение с ужасно длинным хвостом из-за Москвы, Петербурга и Новосибирской области.
+```{r warning=FALSE, include=FALSE }
+#result_2$RNF_grants[result_2$RNF_grants == 0] <- NA
+result_2 <- result_2 %>% mutate(log_RNF_grants = log(RNF_grants+1))
+#summary(result_2$log_RNF_grants)
+result_2 <- result_2[match(rus.map$NL_NAME_1, result_2$region_rus_from_map),]
+```
+
+```{r warning=FALSE, echo=FALSE}
+ggplot(data = rus.map) +
+  geom_sf(aes(fill=result_2$RNF_grants), lwd = lwdp) + 
+  scale_fill_viridis(option="B",direction =-1, begin = 0.1)+
+  coord_sf(crs=projection)+ 
+  labs(fill = "Гранты РНФ:\nсумма за 2014-2019 (в шт)") +
+  common
+```
+
+Такое “неудачное” распределение обычно у “населения в человеках” и “доходах в деньгах”. Лечат это чаще всего логарифмированием. Шкала теперь не имеет сходу понятной интерпретации, но зато градиент становится ровнее, так как “хвост прижат”.
+
+```{r warning=FALSE, echo=FALSE}
+# графики суммы грантов #######
+ggplot(data = rus.map) +
+  geom_sf(aes(fill=result_2$log_RNF_grants), lwd = lwdp) + 
+  scale_fill_gradient(low="#e5f5f9", high="#006d2c")+#colours=brewer.pal(9,"BuGn"))+
+  coord_sf(crs=projection)+ 
+  labs(fill = "Гранты РНФ: \nсумма за 2014-2019 (после логарифмирования)") +
+  common
+
+```
+
+*** 
+Далее я смотрела доли регионов (число грантов в регионе/общее число грантов по всем регионам) по двум периодам - 2014-2016 и 2017-2019, в надежде, что вдруг есть какие-то красивые тенденции во времени. 
+Доли также сильно перетягивают на себя Москва, Петербург и Новосибирская область и хорошего градиента на получается. Кроме того, мы фактически не видим разницу в картах по двум периодам.
+
+```{r warning=FALSE, echo=FALSE}
+# графики по двум периодам
+ggplot(data = rus.map) +
+  geom_sf(aes(fill=result_2$first_period), lwd = lwdp) + 
+  scale_fill_viridis(option="B",direction =-1, begin = 0.001) +
+  coord_sf(crs=projection)+ 
+  labs(fill = "Гранты РНФ: \nсредняя доля региона за 2014-2016") +
+  common
+```
+
+```{r warning=FALSE, echo=FALSE}
+ggplot(data = rus.map) +
+  geom_sf(aes(fill=result_2$second_period), lwd = lwdp) + 
+  scale_fill_viridis(option="B",direction =-1, begin = 0.001) +
+  coord_sf(crs=projection)+ 
+  labs(fill = "Гранты РНФ: \nсредняя доля региона за 2017-2019") +
+  common
+```
+
+*** 
+Я попробовала поколдовать с предыдущими картами – вынести из градиента топ-3 регионов + регионы без грантов залить белым.
+
+```{r warning=FALSE, echo=FALSE}
+
+# графики по двум периодам без Мск, СПб
+result_2_non_Msk_SPb <- result_2 %>% 
+  mutate(first_period = ifelse(region == "The City of Moscow",NA,first_period),
+         first_period = ifelse(region == "The City of Sankt-Petersburg",NA,first_period),
+         first_period = ifelse(region == "Novosibirsk region",NA,first_period),
+         second_period = ifelse(region == "The City of Moscow",NA,second_period),
+         second_period = ifelse(region == "The City of Sankt-Petersburg",NA,second_period),
+         second_period = ifelse(region == "Novosibirsk region",NA,second_period))
+
+result_2_non_Msk_SPb[result_2_non_Msk_SPb == 0] <- NA
+#result_2_non_Msk_SPb_1 <- result_2_non_Msk_SPb %>% select(1,2,3,first_period,second_period)
+#rm(result_2_non_Msk_SPb_1)
+```
+
+```{r warning=FALSE, echo=FALSE}
+ggplot(data = rus.map) +
+  geom_sf(aes(fill=100*(result_2_non_Msk_SPb$first_period)), lwd = lwdp) + 
+  scale_fill_gradient(low="#e5f5f9", high="#006d2c", na.value = "white")+#colours=brewer.pal(9,"BuGn"))+
+  coord_sf(crs=projection)+ 
+  labs(fill = "Гранты РНФ: \nсредняя доля региона за 2014-2016 \n(без ТОП-3: МСК - 41.3%, СПб - 11.3% и \nНовосиб.обл - 9.48%) (%)") +
+  common
+```
+
+```{r warning=FALSE, echo=FALSE}
+ggplot(data = rus.map) +
+  geom_sf(aes(fill=100*(result_2_non_Msk_SPb$second_period)), lwd = lwdp) + 
+  scale_fill_gradient(low="#e5f5f9", high="#006d2c", na.value = "white")+#colours=brewer.pal(9,"BuGn"))+
+  coord_sf(crs=projection)+ 
+  labs(fill = "Гранты РНФ: \nсредняя доля региона за 2017-2019 \n(без ТОП-3: МСК - 40.0%, СПб - 14.3% и \nНовосиб.обл - 9.36%) (%)") +
+  common
+```
+
+На последних двух графиказ ТОП-3 остались белыми и визуально слились с нулевыми регионами.
+
+*** 
