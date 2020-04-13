@@ -12,14 +12,14 @@ library(formattable)
 library(plotrix)
 ```
 
-## О данных
+### О данных {-}
 В датасете исправлены ошибки и сделаны en_названия регионов. Те full_table_7_04.csv финальный датасет со всем-всем + доп колонки с росстата. NA заменены на нули. Мое + Алексей. Надо объединить кодбук. Все преобразования датасета в файле scr1.R
 ```{r warning=FALSE,  include=FALSE, message=FALSE}
 df <- read_csv("~/Desktop/Applied_Geography/rnf_model/grantbook/data/full_table_7_04.csv")
 #write.csv(alexey_database, "alexey_database.csv",row.names = TRUE, fileEncoding = "UTF-8" )
 ```
 
-## Описательные статистики
+### Описательные статистики {-}
 ```{r warning=FALSE}
 df_cut_stat <- df %>% 
   select(35:40)
@@ -30,7 +30,9 @@ formattable(J, digits = 2) %>% select(1:9)
 #write.csv(J, "descr_stat.csv",row.names = TRUE, fileEncoding = "UTF-8" )
 ```
 
-## Дурацкая таблица
+### Таблицы {-}
+
+###### Дурацкая таблица: _Доля грантов РНФ (от всех выданных грантов РНФ по стране в соответствующй год)_ {-}
 ```{r warning=FALSE}
 # возвращаемся к df_cut_share
 df_color <- df %>% 
@@ -60,7 +62,9 @@ formattable(df_color, list(
   select(3, starts_with("sh_2")) 
 
 ```
-## Таблица получше
+
+
+###### Таблица получше: _Доля грантов РНФ в 2014-2016 (first_period) и в 2017-2019 (second_period) (от всех выданных грантов РНФ по стране в соответствующй период)_ {-}
 ```{r warning=FALSE, message=FALSE}
 #colnames(df_color)
 
@@ -72,7 +76,7 @@ as.datatable(f)
 
 ```
 
-## Боксплоты
+### Боксплоты {-}
 ```{r warning=FALSE}
 # long 85 * 6 = 510
 library(tidyr)
