@@ -108,8 +108,46 @@
             <section class="normal" id="section-">
 <div id="модели" class="section level1">
 <h1><span class="header-section-number">5</span> Модели</h1>
-<p>We have finished a nice book.</p>
+<p><em>ПОМНИ о Чукотке и Еврейская АОб там не 0, там нет данных (примечание в росстате: засекречены WTF). Пока сделаем нули вместо NA</em></p>
+<p>Будем отталкиваться от модели вида:</p>
+<p><span class="math display">\[sh\_grants_{2019} = sh\_grants_{2014-2018} +  \log(gov\_subs_{2018}) + sh\_doct_{2018}\]</span>
+где,</p>
+<p><span class="math inline">\(sh\_grants_{2019}\)</span> - доля грантов у региона в 2019</p>
+<p><span class="math inline">\(sh\_grants_{2014-2018}\)</span> - доля грантов у региона в 2014-2018</p>
+<p><span class="math inline">\(\log(gov\_subs_{2018})\)</span> - логарифм суммы четырех видов субсидий из госбюджета в 2018 (см. Переменные и гипотезы Н1)</p>
+<p><span class="math inline">\(sh\_doct_{2018}\)</span> - доля докторов + кандидатов в регионе от общего числа по России в 2018</p>
+<pre><code>## 
+## Calls:
+## model: lm(formula = sh_2019 ~ sh_14_18 + ln_st_subs_all + sh_sum_DOCT_CAND_2018, 
+##     data = h_cut)
+## model_2: lm(formula = sh_2019 ~ ln_st_subs_all + sh_sum_DOCT_CAND_2018, 
+##     data = h_cut)
+## 
+## ===============================================
+##                            model     model_2   
+## -----------------------------------------------
+##   (Intercept)            -0.001     -0.005     
+##                          (0.002)    (0.005)    
+##   sh_14_18                1.096***             
+##                          (0.051)               
+##   ln_st_subs_all          0.000      0.000     
+##                          (0.000)    (0.000)    
+##   sh_sum_DOCT_CAND_2018  -0.119*     1.023***  
+##                          (0.054)    (0.027)    
+## -----------------------------------------------
+##   R-squared               0.993      0.952     
+##   N                      85         85         
+## ===============================================
+##   Significance: *** = p &lt; 0.001;   
+##                 ** = p &lt; 0.01; * = p &lt; 0.05</code></pre>
+<div id="диаграммы-рассеяния" class="section level4">
+<h4><span class="header-section-number">5.0.0.1</span> Диаграммы рассеяния</h4>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+<img src="bookdown-demo_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-34-1.png" width="672" />
+<img src="bookdown-demo_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 
+</div>
 </div>
             </section>
 
@@ -167,6 +205,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
