@@ -108,9 +108,9 @@ summary(model_st_2)
 ```{r warning=FALSE, message=FALSE, echo=FALSE}
 # сравниваем несколько моделей
 compar_12 <- mtable(model, model_2)
-#show_html(compar_12)
+show_html(compar_12)
 ```
-![](images/table_1.png)
+![](images/table_2.png)
 
 ```{r eval=FALSE, echo=FALSE}
 # сравниваем несколько моделей
@@ -118,17 +118,22 @@ compar_st_12 <- mtable(model_st, model_st_2)
 compar_st_12
 ```
 
-#### Диаграммы рассеяния
+#### Диаграммы рассеяния {-}
+
+_Доля грантов у региона в 2019_ и _доля грантов у региона в 2014-2018_ связаны линейно.
 ```{r warning=FALSE, message=FALSE, echo=FALSE}
 
 qplot(h_cut$sh_2019, h_cut$sh_14_18)
 ```
+
+Уберем ТОП-3 всё еще связаны линейно. 
 ```{r warning=FALSE, message=FALSE, echo=FALSE}
 h_cut_non_cap <- h_cut %>% dplyr::filter(region_rus_from_map != "г. Москва", 
                                   region_rus_from_map != "г. Санкт-Петербург",
                                   region_rus_from_map != "Новосибирская область") 
 qplot(h_cut_non_cap$sh_2019, h_cut_non_cap$sh_14_18)
 ```
+Точно такие же графики по связи _доли грантов у региона в 2019_ и _доли докторов + кандидатов в регионе от общего числа по России в 2018_
 
 ```{r eval=FALSE, echo=FALSE}
 
