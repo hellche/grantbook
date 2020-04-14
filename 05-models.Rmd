@@ -108,8 +108,9 @@ summary(model_st_2)
 ```{r warning=FALSE, message=FALSE, echo=FALSE}
 # сравниваем несколько моделей
 compar_12 <- mtable(model, model_2)
-compar_12
+#show_html(compar_12)
 ```
+![](images/table_1.png)
 
 ```{r eval=FALSE, echo=FALSE}
 # сравниваем несколько моделей
@@ -129,11 +130,11 @@ h_cut_non_cap <- h_cut %>% dplyr::filter(region_rus_from_map != "г. Москв�
 qplot(h_cut_non_cap$sh_2019, h_cut_non_cap$sh_14_18)
 ```
 
-```{r warning=FALSE, message=FALSE, echo=FALSE}
+```{r eval=FALSE, echo=FALSE}
 
 qplot(h_cut$sh_2019, h_cut$sh_sum_DOCT_CAND_2018)
 ```
-```{r warning=FALSE, message=FALSE, echo=FALSE}
+```{r eval=FALSE, echo=FALSE}
 h_cut_non_cap <- h_cut %>% dplyr::filter(region_rus_from_map != "г. Москва",
                                   region_rus_from_map != "Московская область",
                                   region_rus_from_map != "г. Санкт-Петербург",
