@@ -108,14 +108,14 @@ summary(model_st_2)
 ```{r warning=FALSE, message=FALSE, echo=FALSE}
 # сравниваем несколько моделей
 compar_12 <- mtable(model, model_2)
-show_html(compar_12)
+#show_html(compar_12)
 ```
 ![](images/table_2.png)
 
 ```{r eval=FALSE, echo=FALSE}
 # сравниваем несколько моделей
 compar_st_12 <- mtable(model_st, model_st_2)
-compar_st_12
+#compar_st_12
 ```
 
 #### Диаграммы рассеяния {-}
@@ -133,6 +133,7 @@ h_cut_non_cap <- h_cut %>% dplyr::filter(region_rus_from_map != "г. Москв�
                                   region_rus_from_map != "Новосибирская область") 
 qplot(h_cut_non_cap$sh_2019, h_cut_non_cap$sh_14_18)
 ```
+
 Точно такие же графики по связи _доли грантов у региона в 2019_ и _доли докторов + кандидатов в регионе от общего числа по России в 2018_
 
 ```{r eval=FALSE, echo=FALSE}
