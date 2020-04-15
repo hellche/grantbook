@@ -13,7 +13,8 @@ library(plotrix)
 ```
 
 ### О данных {-}
-В датасете исправлены ошибки и сделаны en_названия регионов. Те full_table_7_04.csv финальный датасет со всем-всем + доп колонки с росстата. NA заменены на нули. Мое + Алексей. Надо объединить кодбук. Все преобразования датасета в файле scr1.R
+<span style="color: #d9d9d9">_В датасете исправлены ошибки и сделаны en_названия регионов. Те full_table_7_04.csv финальный датасет со всем-всем + доп колонки с росстата. NA заменены на нули. Мое + Алексей. Надо объединить кодбук. Все преобразования датасета в файле scr1.R_</span>
+
 ```{r warning=FALSE,  include=FALSE, message=FALSE}
 df <- read_csv("~/Desktop/Applied_Geography/rnf_model/grantbook/data/full_table_7_04.csv")
 #write.csv(alexey_database, "alexey_database.csv",row.names = TRUE, fileEncoding = "UTF-8" )
