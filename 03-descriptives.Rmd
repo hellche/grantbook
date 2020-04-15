@@ -29,7 +29,7 @@ J <- data.frame(t(J))
 J <- formattable(J, digits = 2) %>% select(1:9)
 
 knitr::kable(J, booktabs = T) %>%
-  kable_styling(font_size = 14)
+  kable_styling(font_size = 12)
 #write.csv(J, "descr_stat.csv",row.names = TRUE, fileEncoding = "UTF-8" )
 ```
 
