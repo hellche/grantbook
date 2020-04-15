@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Карты | Гранты РНФ</title>
-  <meta name="description" content="4 Карты | Гранты РНФ" />
+  <title>5 Карты | Гранты РНФ</title>
+  <meta name="description" content="5 Карты | Гранты РНФ" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Карты | Гранты РНФ" />
+  <meta property="og:title" content="5 Карты | Гранты РНФ" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Карты | Гранты РНФ" />
+  <meta name="twitter:title" content="5 Карты | Гранты РНФ" />
   
   
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="описатеьные-статистики.html"/>
+<link rel="prev" href="переменные-из-ринца.html"/>
 <link rel="next" href="модели.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -88,8 +88,9 @@
 <li class="chapter" data-level="" data-path="описатеьные-статистики.html"><a href="описатеьные-статистики.html#таблицы"><i class="fa fa-check"></i>Таблицы</a></li>
 <li class="chapter" data-level="" data-path="описатеьные-статистики.html"><a href="описатеьные-статистики.html#боксплоты"><i class="fa fa-check"></i>Боксплоты</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="карты.html"><a href="карты.html"><i class="fa fa-check"></i><b>4</b> Карты</a></li>
-<li class="chapter" data-level="5" data-path="модели.html"><a href="модели.html"><i class="fa fa-check"></i><b>5</b> Модели</a><ul>
+<li class="chapter" data-level="4" data-path="переменные-из-ринца.html"><a href="переменные-из-ринца.html"><i class="fa fa-check"></i><b>4</b> Переменные из РИНЦа</a></li>
+<li class="chapter" data-level="5" data-path="карты.html"><a href="карты.html"><i class="fa fa-check"></i><b>5</b> Карты</a></li>
+<li class="chapter" data-level="6" data-path="модели.html"><a href="модели.html"><i class="fa fa-check"></i><b>6</b> Модели</a><ul>
 <li class="chapter" data-level="" data-path="модели.html"><a href="модели.html#что-попробовать-дальше"><i class="fa fa-check"></i>Что попробовать дальше</a></li>
 </ul></li>
 </ul>
@@ -110,7 +111,7 @@
 
             <section class="normal" id="section-">
 <div id="карты" class="section level1">
-<h1><span class="header-section-number">4</span> Карты</h1>
+<h1><span class="header-section-number">5</span> Карты</h1>
 <p>ЗАЧЕМ ВСЁ ЭТО? ⬇️</p>
 <p>Идея – идти от двух гипотез:</p>
 <ol style="list-style-type: decimal">
@@ -118,18 +119,18 @@
 <li><p><strong>гранты к гранитам в пространстве</strong> – если регион A граничит с регионом B, при этом в регионе A есть гранты, то у соседа тоже будут. <span style="color: #ff66cc;">Результат: гипротеза картой опровергается, а значит те пространственные эконометрические модели, которые я думала сюда прикрутить тоже в мусор</span></p></li>
 </ol>
 <p>Если просто нанести все гранты на карту, то ничего инетеренсого не видно, так как распределение с ужасно длинным хвостом из-за Москвы, Петербурга и Новосибирской области.</p>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>Такое “неудачное” распределение обычно у “населения в человеках” и “доходах в деньгах”. Лечат это чаще всего логарифмированием. Шкала теперь не имеет сходу понятной интерпретации, но зато градиент становится ровнее, так как “хвост прижат”.</p>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <hr />
 <p>Далее я смотрела доли регионов (число грантов в регионе/общее число грантов по всем регионам) по двум периодам - 2014-2016 и 2017-2019, в надежде, что вдруг есть какие-то красивые тенденции во времени.
 Доли также сильно перетягивают на себя Москва, Петербург и Новосибирская область и хорошего градиента на получается. Кроме того, мы фактически не видим разницу в картах по двум периодам.</p>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <hr />
 <p>Я попробовала поколдовать с предыдущими картами – вынести из градиента топ-3 регионов + регионы без грантов залить белым.</p>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>На последних двух графиказ ТОП-3 остались белыми и визуально слились с нулевыми регионами.</p>
 <hr />
 
@@ -139,7 +140,7 @@
           </div>
         </div>
       </div>
-<a href="описатеьные-статистики.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="переменные-из-ринца.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="модели.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
