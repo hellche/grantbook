@@ -10,6 +10,7 @@ library(readr)
 library(fBasics)
 library(formattable)
 library(plotrix)
+library(stringr)
 ```
 
 ### О данных {-}
@@ -177,6 +178,46 @@ p <- data.table::setDT(nf)[ , list(mean = mean(N_aut_crinc5),
 p <- formattable(p)
 as.datatable(p)
 ```
+
+## Доля класнных публикаций{-}
+
+Посчитаем долю (%) публикаций Scopus и Web of Science от общего числа публикаций **в организации** (НЕ В РЕГИОНЕ) по такой формуле:
+
+$$ \frac{sco\_wos\_5}{elab\_5 +1} * 100$$
+где,
+
+$sco_wos_5$ -	число статей в журналах, входящих в Web of Science или Scopus, за 5 лет (переменная в кодбуке -- _N_pub_WOSSC5_)
+
+$elab_5$ - число публикаций на elibrary, за 5 лет (переменная в кодбуке -- _N_elibrary5_)
+
+Единицу в знаминатель мы добавили, чтобы не отрезать организации, у которых 0 публикаций на elibrary.ru за 5 лет (да, такие тоже есть, 16 из 995). Потом их можно и отрезать, пока сохраним.
+
+**После этого агрегируем до уровня региона** и пока непонятно, что лучше медиана или среднее, сделаем оба варианта. Т.е. порядок действий важен! У нас такой: по каждой из 995 организаций счиатем долю классных публикаций. Потом группируем по регионам и спмотрим как в среднем по регину. Сохраню столбец с кол-вом организаций в регионе чтобы вы не пугались, что мы получили на первых местах Ленинградскую и Томскую области. Я проверила, никакой ошибки. Наши данные говорят именно об этом. Видимо надо вычищать мусор из Москвы (убирать те организации, у которых нули, либо кого-то добавлять в датасет, кого тут нет, но я не очень понимаю кого у нас нет)
+
+```{r warning=FALSE, message=FALSE}
+# код для убирания процентов в скобках
+nf <- nf %>%
+  mutate(N_pub_WOSSC5_persent = gsub("[\\(\\)]", "", regmatches(N_pub_WOSSC5, gregexpr("\\(.*?\\)", N_pub_WOSSC5)))) %>% 
+  mutate(N_pub_WOSSC5_persent = gsub("%", "", N_pub_WOSSC5_persent)) %>% 
+  mutate(N_pub_WOSSC5_persent = gsub(",", ".", N_pub_WOSSC5_persent)) %>% 
+  mutate(N_pub_WOSSC5 = gsub("\\(.*","",N_pub_WOSSC5)) %>% 
+  mutate(N_pub_WOSSC5 = as.numeric(N_pub_WOSSC5),
+         N_pub_WOSSC5_persent = as.numeric(as.character(N_pub_WOSSC5_persent)))
+```
+
+
+```{r warning=FALSE, message=FALSE}
+options(digits = 3)
+h <- data.table::setDT(nf)[ , list(mean = mean(100*(N_pub_WOSSC5/(N_elibrary5+1))), 
+                                   median = median(100*(N_pub_WOSSC5/(N_elibrary5+1))),
+                                   min = min(100*(N_pub_WOSSC5/(N_elibrary5+1))),
+                                   max = max(100*(N_pub_WOSSC5/(N_elibrary5+1))),
+                                   count_of_Uni = .N), by = .(region_rus_from_map)]
+h <- formattable(h)
+as.datatable(h)
+```
+
+
 
 
 
