@@ -89,7 +89,9 @@
 <li class="chapter" data-level="" data-path="описатеьные-статистики.html"><a href="описатеьные-статистики.html#боксплоты"><i class="fa fa-check"></i>Боксплоты</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="переменные-из-ринца.html"><a href="переменные-из-ринца.html"><i class="fa fa-check"></i><b>4</b> Переменные из РИНЦа</a><ul>
+<li class="chapter" data-level="" data-path="переменные-из-ринца.html"><a href="переменные-из-ринца.html#люди-из-ядра-ринца"><i class="fa fa-check"></i>Люди из ядра РИНЦа</a></li>
 <li class="chapter" data-level="" data-path="переменные-из-ринца.html"><a href="переменные-из-ринца.html#доля-класнных-публикаций"><i class="fa fa-check"></i>Доля класнных публикаций</a></li>
+<li class="chapter" data-level="" data-path="переменные-из-ринца.html"><a href="переменные-из-ринца.html#импакт-фактор-журналов-авторы-wosscopus"><i class="fa fa-check"></i>Импакт-фактор журналов + авторы WoS/Scopus</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="карты.html"><a href="карты.html"><i class="fa fa-check"></i><b>5</b> Карты</a></li>
 <li class="chapter" data-level="6" data-path="модели.html"><a href="модели.html"><i class="fa fa-check"></i><b>6</b> Модели</a><ul>
@@ -121,18 +123,18 @@
 <li><p><strong>гранты к гранитам в пространстве</strong> – если регион A граничит с регионом B, при этом в регионе A есть гранты, то у соседа тоже будут. <span style="color: #ff66cc;">Результат: гипротеза картой опровергается, а значит те пространственные эконометрические модели, которые я думала сюда прикрутить тоже в мусор</span></p></li>
 </ol>
 <p>Если просто нанести все гранты на карту, то ничего инетеренсого не видно, так как распределение с ужасно длинным хвостом из-за Москвы, Петербурга и Новосибирской области.</p>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>Такое “неудачное” распределение обычно у “населения в человеках” и “доходах в деньгах”. Лечат это чаще всего логарифмированием. Шкала теперь не имеет сходу понятной интерпретации, но зато градиент становится ровнее, так как “хвост прижат”.</p>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <hr />
 <p>Далее я смотрела доли регионов (число грантов в регионе/общее число грантов по всем регионам) по двум периодам - 2014-2016 и 2017-2019, в надежде, что вдруг есть какие-то красивые тенденции во времени.
 Доли также сильно перетягивают на себя Москва, Петербург и Новосибирская область и хорошего градиента на получается. Кроме того, мы фактически не видим разницу в картах по двум периодам.</p>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <hr />
 <p>Я попробовала поколдовать с предыдущими картами – вынести из градиента топ-3 регионов + регионы без грантов залить белым.</p>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>На последних двух графиказ ТОП-3 остались белыми и визуально слились с нулевыми регионами.</p>
 <hr />
 

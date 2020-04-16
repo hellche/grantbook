@@ -168,6 +168,8 @@ as.datatable(rf)
 
 [Датасет](https://docs.google.com/file/d/1AfGyHBd9Ech3LQTaYUL71KwSU8pBS_A-/edit?filetype=msexcel) и [кодбук](https://docs.google.com/file/d/1MlRau9SWRc3hLhG5bX_CXm3VOb0LRqwd/edit?filetype=msexcel)
 
+## Люди из ядра РИНЦа {-}
+
 Я выбрала один из показателей -- <span style="background-color: #ffff99">Число авторов, имеющих публикации, входящие в ядро РИНЦ, за 5 лет</span> и вот что получилось (+добавила кол-во ун-тов в регионе). 
 ```{r warning=FALSE, message=FALSE}
 p <- data.table::setDT(nf)[ , list(mean = mean(N_aut_crinc5), 
@@ -181,7 +183,7 @@ as.datatable(p)
 
 ## Доля класнных публикаций{-}
 
-Посчитаем долю (%) публикаций Scopus и Web of Science от общего числа публикаций **в организации** (НЕ В РЕГИОНЕ) по такой формуле:
+Посчитаем <span style="background-color: #ffff99">долю (%) публикаций Scopus и Web of Science от общего числа публикаций **в организации**</span>  (НЕ В РЕГИОНЕ) по такой формуле:
 
 $$ \frac{sco\_wos\_5}{elab\_5 +1} * 100$$
 где,
@@ -190,9 +192,9 @@ $sco_wos_5$ -	число статей в журналах, входящих в W
 
 $elab_5$ - число публикаций на elibrary, за 5 лет (переменная в кодбуке -- _N_elibrary5_)
 
-Единицу в знаминатель мы добавили, чтобы не отрезать организации, у которых 0 публикаций на elibrary.ru за 5 лет (да, такие тоже есть, 16 из 995). Потом их можно и отрезать, пока сохраним.
+Единицу в знаменатель мы добавили, чтобы не отрезать организации, у которых 0 публикаций на elibrary.ru за 5 лет (да, такие тоже есть, 16 из 995). Потом их можно и отрезать, пока сохраним.
 
-**После этого агрегируем до уровня региона** и пока непонятно, что лучше медиана или среднее, сделаем оба варианта. Т.е. порядок действий важен! У нас такой: по каждой из 995 организаций счиатем долю классных публикаций. Потом группируем по регионам и спмотрим как в среднем по регину. Сохраню столбец с кол-вом организаций в регионе чтобы вы не пугались, что мы получили на первых местах Ленинградскую и Томскую области. Я проверила, никакой ошибки. Наши данные говорят именно об этом. Видимо надо вычищать мусор из Москвы (убирать те организации, у которых нули, либо кого-то добавлять в датасет, кого тут нет, но я не очень понимаю кого у нас нет)
+<span style="background-color: #ffff99">**После этого агрегируем до уровня региона**</span>  и пока непонятно, что лучше медиана или среднее, сделаем оба варианта. Т.е. порядок действий важен! У нас такой: по каждой из 995 организаций счиатем долю классных публикаций. Потом группируем по региону и смотрим что в среднем. Сохраню столбец с кол-вом организаций в регионе, чтобы вы не пугались, что мы получили на первых местах Ленинградскую и Томскую области. Я проверила, никакой ошибки. Наши данные говорят именно об этом. Видимо надо вычищать мусор из Москвы (убирать те организации, у которых нули, либо кого-то добавлять в датасет, кого тут нет, но я не очень понимаю кого у нас нет)
 
 ```{r warning=FALSE, message=FALSE}
 # код для убирания процентов в скобках
@@ -217,8 +219,161 @@ h <- formattable(h)
 as.datatable(h)
 ```
 
+***
+
+## Импакт-фактор журналов + авторы WoS/Scopus {-}
+
+У нас есть две группы переменных:
+
+**1) средневзвешенный импакт-фактор журналов, в которых были опубликованы статьи**
+
+- imp_j_pub5 Средневзвешенный импакт-фактор журналов, в которых были опубликованы статьи,за 5 лет
+- y2010mean_imp_j	Средневзвешенный импакт-фактор журналов, в которых были опубликованы статьи,2010 год
+.
+.
+- y2019mean_imp_j	Средневзвешенный импакт-фактор журналов, в которых были опубликованы статьи,2019 год
 
 
+**2) число авторов WoS/Scopus в организациях**
+
+- N_aut_WOSSC5	Число авторов, имеющих статьи в журналах, входящих в Web of Science или Scopus,за 5 лет
+- y2010n_aut_wossc	Число авторов статей в журналах Web of Science или Scopus,2010 год
+.
+.
+- y2019n_aut_wossc	Число авторов статей в журналах Web of Science или Scopus,2019 год
+
+```{r warning=FALSE, message=FALSE, eval=FALSE}
+
+# ЭТОТ КУСОК ДЕРЬМА НЕ РЕНДЕРИТСЯ, ПОЭТОМУ 
+nf_2 <- nf
+m <- c(as.character(expression(imp_j_pub5, 
+                    y2010mean_imp_j, 
+                    y2011mean_imp_j, 
+                    y2012mean_imp_j, 
+                    y2013mean_imp_j,
+                    y2014mean_imp_j,
+                    y2015mean_imp_j,
+                    y2016mean_imp_j,
+                    y2017mean_imp_j,
+                    y2018mean_imp_j,
+                    y2019mean_imp_j,
+                    N_aut_WOSSC5,
+                    y2010n_aut_wossc,
+                    y2011n_aut_wossc,
+                    y2012n_aut_wossc,
+                    y2013n_aut_wossc,
+                    y2014n_aut_wossc,
+                    y2015n_aut_wossc,
+                    y2016n_aut_wossc,
+                    y2017n_aut_wossc,
+                    y2018n_aut_wossc,
+                    y2019n_aut_wossc)))
+nf_2[,m] <- apply(nf_2[,m], 2, function(y) as.numeric(gsub(",", ".", y)))
+
+# ЗАПИШЕМ РУКАМИ И ОТКРОЕМ ЗАНОВО
+
+write.csv(nf_2, "nf_2.csv", ,row.names = TRUE, fileEncoding = "UTF-8" )
+#nd[, c(1:2,4)] <- apply(nd[, c(1:2,4)], 2, function(y) as.numeric(gsub(",", ".", y)))
+#nf %>% select(m) %>% summary()
+```
+ 
+ 
+ЧТО ДЕЛАТЬ С НУЛЯМИ? ЭТО ОЧЕНЬ ВАЖНО! В данных есть три знака: -, NA, 0. Если мы считаем среднее, то: 
+
+1) $(2 + 3 + 0)/3  = 2$ 
+
+2) $(2 + 3 + NA)/2  = 3$ - выбран этот вариант, появились NaN = mean(NA,NA,NA)
 
 
+```{r warning=FALSE, message=FALSE}
 
+nf_2 <- read_csv("~/Desktop/Applied_Geography/rnf_model/grantbook/data/nf_2.csv")
+nf_2[nf_2 == "-"] <- NA
+#nf_2[is.na(nf_2)] <- 0
+
+nf_2 <- nf_2 %>%
+   dplyr::mutate(imp_2011_13 = 
+             rowMeans(data.frame(y2011mean_imp_j, y2012mean_imp_j, y2013mean_imp_j), na.rm = TRUE),
+           imp_2014_16 = 
+             rowMeans(data.frame(y2014mean_imp_j, y2015mean_imp_j, y2016mean_imp_j), na.rm = TRUE),
+           imp_2017_19 = 
+             rowMeans(data.frame(y2017mean_imp_j, y2018mean_imp_j, y2019mean_imp_j), na.rm = TRUE),
+           aut_wos_sc_2011_13 = 
+             rowMeans(data.frame(y2011n_aut_wossc, y2012n_aut_wossc, y2013n_aut_wossc), na.rm = TRUE),
+           aut_wos_sc_2014_16 = 
+             rowMeans(data.frame(y2014n_aut_wossc, y2015n_aut_wossc, y2016n_aut_wossc), na.rm = TRUE),
+           aut_wos_sc_2017_19 = 
+             rowMeans(data.frame(y2017n_aut_wossc, y2018n_aut_wossc, y2019n_aut_wossc), na.rm = TRUE))
+      
+```
+ 
+ 
+Заменяем NaN на 0. ПОДУМАТЬ О ТОМ КАКОЕ ЕСТЬ СМЕЩЕНИЕ И КУДА
+
+Посмотрим на три периода: 2011-2013, 2014-2016, 2017-2019.
+
+Таблица с <span style="background-color: #ffff99"> медианными значениями _средневзвешенного импакт-фактора журналов, в которых были опубликованы статьи_ </span> по этим трем периодам. Mean, min и max просто не влезли, пришлось скрыть. 
+
+В таблице еще больший ужас. Камчатка выпрыгнула в топы. 
+
+```{r warning=FALSE, message=FALSE}
+
+# Заменяем NaN на 0 ПОДУМАЙ КАК ЭТОТ СКРИПТ СЧИТАЛ ДАЛЕЕ, СТАВИТ ЛИ ОН na.rm автоматом?
+nf_2[nf_2 == "NaN"] <- 0
+options(digits = 2)
+t <- data.table::setDT(nf_2)[ , list(#mean11_13 = mean(imp_2011_13), 
+                                     #mean14_16 = mean(imp_2014_16),
+                                     #mean17_19 = mean(imp_2017_19),
+                                   median11_13 = median(imp_2011_13),
+                                   median14_16 = median(imp_2014_16),
+                                   median17_19 = median(imp_2017_19),
+                                   #min11_13 = min(imp_2011_13),
+                                   #min14_16 = min(imp_2014_16),
+                                   #min17_19 = min(imp_2017_19),
+                                   #max11_13 = max(imp_2011_13),
+                                   #max14_16 = max(imp_2014_16),
+                                   #max17_19 = max(imp_2017_19),
+                                   count_uni = .N), by = .(region_rus_from_map)]
+t <- formattable(t)
+as.datatable(t)
+
+#nn <- nf_2 %>% select(4,m) %>% filter()
+#font.size <- "10pt"
+
+#t %>% 
+#   DT::datatable(
+#     options=list(
+#       initComplete = htmlwidgets::JS(
+#          "function(settings, json) {",
+#          paste0("$(this.api().table().container()).css({'font-size': '", font.size, "'});"),
+#          "}")
+#       ) 
+#     ) %>% 
+#  DT::formatRound(columns = c(2:4), digits = 3)
+```
+ 
+Я проверила, ошибки нет. Такая же табличка <span style="background-color: #ffff99"> с импакт-фактрором, только со средними значениями </span> и я ради наглядности добавила еще столбик с максимумом за период 2017-2019, чтобы было понять, что просто выигрывают регионы, у которых нет стремных универов, которые своими нулями утягивают и медиану и среднее вниз.
+ 
+```{r warning=FALSE, message=FALSE}
+
+# Заменяем NaN на 0 ПОДУМАЙ КАК ЭТОТ СКРИПТ СЧИТАЛ ДАЛЕЕ, СТАВИТ ЛИ ОН na.rm автоматом?
+nf_2[nf_2 == "NaN"] <- 0
+options(digits = 2)
+p <- data.table::setDT(nf_2)[ , list(mean11_13 = mean(imp_2011_13), 
+                                     mean14_16 = mean(imp_2014_16),
+                                     mean17_19 = mean(imp_2017_19),
+                                   #median11_13 = median(imp_2011_13),
+                                   #median14_16 = median(imp_2014_16),
+                                   #median17_19 = median(imp_2017_19),
+                                   #min11_13 = min(imp_2011_13),
+                                   #min14_16 = min(imp_2014_16),
+                                   #min17_19 = min(imp_2017_19),
+                                   #max11_13 = max(imp_2011_13),
+                                   #max14_16 = max(imp_2014_16),
+                                   max17_19 = max(imp_2017_19),
+                                   count_uni = .N), by = .(region_rus_from_map)]
+p <- formattable(p)
+as.datatable(p)
+```
+
+ 

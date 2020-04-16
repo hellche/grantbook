@@ -89,7 +89,9 @@
 <li class="chapter" data-level="" data-path="описатеьные-статистики.html"><a href="описатеьные-статистики.html#боксплоты"><i class="fa fa-check"></i>Боксплоты</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="переменные-из-ринца.html"><a href="переменные-из-ринца.html"><i class="fa fa-check"></i><b>4</b> Переменные из РИНЦа</a><ul>
+<li class="chapter" data-level="" data-path="переменные-из-ринца.html"><a href="переменные-из-ринца.html#люди-из-ядра-ринца"><i class="fa fa-check"></i>Люди из ядра РИНЦа</a></li>
 <li class="chapter" data-level="" data-path="переменные-из-ринца.html"><a href="переменные-из-ринца.html#доля-класнных-публикаций"><i class="fa fa-check"></i>Доля класнных публикаций</a></li>
+<li class="chapter" data-level="" data-path="переменные-из-ринца.html"><a href="переменные-из-ринца.html#импакт-фактор-журналов-авторы-wosscopus"><i class="fa fa-check"></i>Импакт-фактор журналов + авторы WoS/Scopus</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="карты.html"><a href="карты.html"><i class="fa fa-check"></i><b>5</b> Карты</a></li>
 <li class="chapter" data-level="6" data-path="модели.html"><a href="модели.html"><i class="fa fa-check"></i><b>6</b> Модели</a><ul>
@@ -131,30 +133,30 @@
 ## model_2: lm(formula = sh_2019 ~ ln_st_subs_all + sh_sum_DOCT_CAND_2018, 
 ##     data = h_cut)
 ## 
-## ===============================================
-##                            model     model_2   
-## -----------------------------------------------
-##   (Intercept)            -0.001     -0.005     
-##                          (0.002)    (0.005)    
-##   sh_14_18                1.096***             
-##                          (0.051)               
-##   ln_st_subs_all          0.000      0.000     
-##                          (0.000)    (0.000)    
-##   sh_sum_DOCT_CAND_2018  -0.119*     1.023***  
-##                          (0.054)    (0.027)    
-## -----------------------------------------------
-##   R-squared               0.993      0.952     
-##   N                      85         85         
-## ===============================================
+## =============================================
+##                           model    model_2   
+## ---------------------------------------------
+##   (Intercept)            -0.00     -0.01     
+##                          (0.00)    (0.01)    
+##   sh_14_18                1.10***            
+##                          (0.05)              
+##   ln_st_subs_all          0.00      0.00     
+##                          (0.00)    (0.00)    
+##   sh_sum_DOCT_CAND_2018  -0.12*     1.02***  
+##                          (0.05)    (0.03)    
+## ---------------------------------------------
+##   R-squared               0.99      0.95     
+##   N                      85        85        
+## =============================================
 ##   Significance: *** = p &lt; 0.001;   
 ##                 ** = p &lt; 0.01; * = p &lt; 0.05</code></pre>
 </div>
 <div id="диаграммы-рассеяния" class="section level4 unnumbered">
 <h4>Диаграммы рассеяния</h4>
 <p><em>Доля грантов у региона в 2019</em> и <em>доля грантов у региона в 2014-2018</em> связаны линейно.
-<img src="bookdown-demo_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<img src="bookdown-demo_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 <p>Уберем ТОП-3 всё еще связаны линейно.
-<img src="bookdown-demo_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<img src="bookdown-demo_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
 <p>Точно такие же графики по связи <em>доли грантов у региона в 2019</em> и <em>доли докторов + кандидатов в регионе от общего числа по России в 2018</em></p>
 <div id="модель-2" class="section level6 unnumbered">
 <h6>Модель 2</h6>
@@ -179,15 +181,15 @@
 ##                  ------------------------ ---------------------   
 ##                   sh_gtant_2019_doct_2018  gtant_2019_doct_2018  
 ## -----------------------------------------------------------------
-##   (Intercept)             0.000***               0.224***        
-##                          (0.000)                (0.047)          
-##   sh_14_18                0.000                  0.392           
-##                          (0.000)                (0.243)          
-##   ln_st_subs_all         -0.000***              -0.017***        
-##                          (0.000)                (0.004)          
+##   (Intercept)             0.00***                 0.22***        
+##                          (0.00)                  (0.05)          
+##   sh_14_18                0.00                    0.39           
+##                          (0.00)                  (0.24)          
+##   ln_st_subs_all         -0.00***                -0.02***        
+##                          (0.00)                  (0.00)          
 ## -----------------------------------------------------------------
-##   R-squared               0.188                  0.188           
-##   N                      85                     85               
+##   R-squared               0.19                    0.19           
+##   N                      85                      85              
 ## =================================================================
 ##   Significance: *** = p &lt; 0.001; ** = p &lt; 0.01; * = p &lt; 0.05</code></pre>
 </div>
@@ -195,9 +197,9 @@
 <div id="диаграммы-рассеяния-для-моделей-2" class="section level4 unnumbered">
 <h4>Диаграммы рассеяния для моделей 2</h4>
 <p><em>Доля грантов у региона в 2019</em> и <em>доля грантов у региона в 2014-2018</em> связаны линейно.
-<img src="bookdown-demo_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<img src="bookdown-demo_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
 <p>Ошибка с “Еврейская АОб”, она выкинута</p>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 </div>
 <div id="что-попробовать-дальше" class="section level2 unnumbered">
 <h2>Что попробовать дальше</h2>
