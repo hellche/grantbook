@@ -13,7 +13,7 @@ library(readxl)
 ```
 
 
-Соединим Дашин датасет по РИНЦу и по данные по грантам универов Алексея.
+Соединим Дашин датасет по РИНЦу и данные Алексея по грантам универов.
 
 ```{r warning=FALSE, message=FALSE}
 df <- read_csv("data/joined_final_clean.csv")

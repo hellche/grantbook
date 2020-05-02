@@ -420,12 +420,12 @@ result_2 <- read_delim("data/result_2.csv",
 ```
 
 
-```{r}
+```{r warning=FALSE, message=FALSE}
 library(dplyr)
 library(ggplot2)
 ```
 
-```{r}
+```{r warning=FALSE, message=FALSE}
 result_HHI <- result_2 %>% mutate(sq_sh_2014 =(100*sh_2014)^2,
                                   sq_sh_2015 =(100*sh_2015)^2,
                                   sq_sh_2016 =(100*sh_2016)^2,
