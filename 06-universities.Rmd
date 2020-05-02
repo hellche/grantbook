@@ -1,0 +1,137 @@
+# Университеты и их гранты
+
+```{r warning=FALSE, include=FALSE, message=FALSE}
+library(knitr)
+library(kableExtra)
+library(dplyr)
+library(readr)
+library(fBasics)
+library(formattable)
+library(plotrix)
+library(tidyr)
+library(readxl)
+```
+
+
+Соединим Дашин датасет по РИНЦу и по данные по грантам универов Алексея.
+
+```{r warning=FALSE, message=FALSE}
+df <- read_csv("data/joined_final_clean.csv")
+#colnames(df)
+```
+
+У нас **7610 грантов** за 2014-2019 годы. 
+
+В РИНЦе нет 52 организаций, которые получали гранты РНФ (всего 97 гратнтов из 7610 мы далее выбросим из анализа). 
+
+Что мы хотимс посмотреть:
+
+1. Топ организаций по грантам
+
+2. Топ регионов по грантам с информацией о кол-ве организваций
+
+3. Топ универов по Доле классных публикаций 
+
+4. Топ регионов по доле классных публикаций
+
+5. ~~3 и 4 (для организаций > 25 Скопусовских/WoS за 5 лет)~~
+
+***
+
+##### Таблица 1: Топ организаций по грантам  {-}
+
+```{r warning=FALSE, message=FALSE}
+
+rf <- df %>% mutate(Uni = gsub('"', '', Uni)) %>% group_by(id,Uni) %>% count()
+colnames(rf)[1] <- "id по РИНЦ" 
+rf <- formattable(rf)
+as.datatable(rf)
+```
+
+***
+
+##### Таблица 2: Топ регионов по грантам с информацией о кол-ве организваций  {-}
+
+```{r warning=FALSE, message=FALSE}
+
+rf <- df %>% group_by(Регион, id) %>% 
+  summarise(grants_count = length(Регион)) %>% group_by(Регион) %>% 
+  summarise(uni_count = length(id), grants_count = sum(grants_count)) %>% 
+  mutate(`грантов на организацию` = grants_count/uni_count)
+
+colnames(rf)[3] <- "всего грантов"
+colnames(rf)[2] <- "всего организаций"
+
+rf <- formattable(rf)
+as.datatable(rf)
+
+
+```
+
+***
+
+##### Таблица 3: Топ универов по Доле классных публикаций  {-}
+
+Посчитаем <span style="background-color: #ffff99">долю (%) публикаций Scopus и Web of Science от общего числа публикаций **в организации**</span>  по такой формуле:
+
+$$ \frac{sco\_wos\_5}{elab\_5 +1} * 100$$
+где,
+
+$sco\_wos\_5$ -	число статей в журналах, входящих в Web of Science или Scopus, за 5 лет (переменная в кодбуке -- _N_pub_WOSSC5_)
+
+$elab\_5$ - число публикаций на elibrary, за 5 лет (переменная в кодбуке -- _N_elibrary5_)
+
+Единицу в знаменатель мы добавили, чтобы не отрезать организации, у которых 0 публикаций на elibrary.ru за 5 лет.
+
+
+```{r warning=FALSE, message=FALSE}
+# код для убирания процентов в скобках
+nl <- df %>% 
+  mutate(N_pub_WOSSC5_persent = gsub("[\\(\\)]", "", regmatches(N_pub_WOSSC5, gregexpr("\\(.*?\\)", N_pub_WOSSC5)))) %>% 
+  mutate(N_pub_WOSSC5_persent = gsub("%", "", N_pub_WOSSC5_persent)) %>% 
+  mutate(N_pub_WOSSC5_persent = gsub(",", ".", N_pub_WOSSC5_persent)) %>% 
+  mutate(N_pub_WOSSC5 = gsub("\\(.*","",N_pub_WOSSC5)) %>% 
+  mutate(N_pub_WOSSC5 = as.numeric(N_pub_WOSSC5),
+         N_pub_WOSSC5_persent = as.numeric(as.character(N_pub_WOSSC5_persent))) %>% 
+  mutate(Uni = gsub('"', '', Uni))
+
+
+#nl <- nl %>% dplyr::filter(N_pub_WOSSC5 > 24) 
+
+```
+
+
+```{r warning=FALSE, message=FALSE}
+options(digits = 3)
+h <- data.table::setDT(nl)[ , list(`доля классных публикаций` = 100*(N_pub_WOSSC5/(N_elibrary5+1)),
+                                   count_of_grants = .N), by = .(Uni)]
+h <- h %>% distinct(Uni, .keep_all = TRUE)
+h <- formattable(h)
+as.datatable(h)
+
+```
+
+***
+
+Теперь агрегируем эти данные по универам, чтобы получить данные по регионам. 
+
+##### Таблица 4: Топ регионов по доле классных публикаций  {-}
+
+Тут мы делаем рейтинг регионов ТОЛЬКО по организациям, которые хоть раз получали грант РНФ. 
+
+```{r warning=FALSE, message=FALSE}
+rg <- nl %>% mutate(share_good = 100*(N_pub_WOSSC5/(N_elibrary5+1))) %>% 
+  group_by(Регион) %>%
+  summarise(mean = mean(share_good),
+            median = median(share_good),
+            min = min(share_good),
+            max = max(share_good),
+            `всего грантов` = length(share_good))
+ra <- rf %>% select(1,2,4)
+rg <- left_join(rg,ra, by = "Регион" )
+
+rg <- formattable(rg)
+as.datatable(rg)
+```
+
+

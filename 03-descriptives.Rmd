@@ -80,6 +80,7 @@ as.datatable(g) # стрелочки пропали из за нее
 
 ***
 
+$HHI=доля^2+S_{2}^{2}+...+S_{n}^{2}}$
 ###### Таблица получше: _доля грантов РНФ в 2014-2016 (first_period) и в 2017-2019 (second_period) (от всех выданных грантов РНФ по стране в соответствующй период)_ {-}
 ```{r warning=FALSE, message=FALSE}
 #colnames(df_color)
@@ -150,7 +151,8 @@ boxplot(data_long_cut_11_12_38_plus$measurement ~ data_long_cut_11_12_38_plus$re
 
 Кол-во организаций по регионам в таблице ⬇️ 
 ```{r warning=FALSE, message=FALSE}
-nf <- read_csv("~/Desktop/Applied_Geography/rnf_model/grantbook/data/final_table_rints.csv")
+nf <- read_delim("data/final_table_rints.csv", 
+    ";", escape_double = FALSE, trim_ws = TRUE)
 rf <- nf %>% group_by(region_rus_from_map) %>% count()
 rf <- formattable(rf)
 as.datatable(rf)
@@ -183,14 +185,14 @@ as.datatable(p)
 
 ## Доля классных публикаций{-}
 
-Посчитаем <span style="background-color: #ffff99">долю (%) публикаций Scopus и Web of Science от общего числа публикаций **в организации**</span>  (НЕ В РЕГИОНЕ) по такой формуле:
+Посчитаем <span style="background-color: #ffff99">долю (%) публикаций Scopus и Web of Science от общего числа публикаций **в организации**</span>  по такой формуле:
 
 $$ \frac{sco\_wos\_5}{elab\_5 +1} * 100$$
 где,
 
-$sco_wos_5$ -	число статей в журналах, входящих в Web of Science или Scopus, за 5 лет (переменная в кодбуке -- _N_pub_WOSSC5_)
+$sco\_wos\_5$ -	число статей в журналах, входящих в Web of Science или Scopus, за 5 лет (переменная в кодбуке -- _N_pub_WOSSC5_)
 
-$elab_5$ - число публикаций на elibrary, за 5 лет (переменная в кодбуке -- _N_elibrary5_)
+$elab\_5$ - число публикаций на elibrary, за 5 лет (переменная в кодбуке -- _N_elibrary5_)
 
 Единицу в знаменатель мы добавили, чтобы не отрезать организации, у которых 0 публикаций на elibrary.ru за 5 лет (да, такие тоже есть, 16 из 995). Потом их можно и отрезать, пока сохраним.
 
@@ -400,5 +402,52 @@ p <- data.table::setDT(nf_2)[ , list(mean11_13 = mean(imp_2011_13),
 p <- formattable(p)
 as.datatable(p)
 ```
+
+
+## HHI {-}
+
+$$HHI=S_1^2 + S_2^2 + ... + S_n^2$$,
+
+где $S_1, S_2 ... S_n$  — выраженные (в процентах) доли регионов.
+
+В случае чистой монополии, когда все гранты будут у одного региона, $HHI=10000$. 
+Для двух регионов с равными долями $HHI=50^2 + 50^2 = 5000$, для 100 регионов (у нас столько нет)) с долей в 1 % $HHI=100$. Таким образом индекс Херфиндаля реагирует на  долю каждого региона от общего кол-ва грантов, выданных в стране к конкретном году.
+
+
+```{r warning=FALSE, include=FALSE }
+result_2 <- read_delim("data/result_2.csv", 
+    ";", escape_double = FALSE, trim_ws = TRUE)
+```
+
+
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+```{r}
+result_HHI <- result_2 %>% mutate(sq_sh_2014 =(100*sh_2014)^2,
+                                  sq_sh_2015 =(100*sh_2015)^2,
+                                  sq_sh_2016 =(100*sh_2016)^2,
+                                  sq_sh_2017 =(100*sh_2017)^2,
+                                  sq_sh_2018 =(100*sh_2018)^2,
+                                  sq_sh_2019 =(100*sh_2019)^2) 
+
+colnames(result_2)
+dd <- data.frame(year = c(2014:2019),
+                 HHI = c(sum(result_HHI$sq_sh_2014),
+                         sum(result_HHI$sq_sh_2015),
+                         sum(result_HHI$sq_sh_2016),
+                         sum(result_HHI$sq_sh_2017),
+                         sum(result_HHI$sq_sh_2018),
+                         sum(result_HHI$sq_sh_2019)))
+
+ggplot(dd) +
+  geom_col(aes(dd$year,dd$HHI))+
+  scale_x_continuous(breaks = c(2014:2019))
+```
+
+Не забудь про ttest. Катерина правильно сказала, что это незначимая разница по годам.
+
 
  
