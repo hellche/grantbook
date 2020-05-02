@@ -127,7 +127,7 @@ rg <- nl %>% mutate(share_good = 100*(N_pub_WOSSC5/(N_elibrary5+1))) %>%
             min = min(share_good),
             max = max(share_good),
             `всего грантов` = length(share_good))
-ra <- rf %>% select(1,2,4)
+ra <- rf %>% dplyr::select(1,2,4)
 rg <- left_join(rg,ra, by = "Регион" )
 
 rg <- formattable(rg)
