@@ -16,13 +16,13 @@ library(readxl)
 Соединим Дашин датасет по РИНЦу и данные Алексея по грантам универов.
 
 ```{r warning=FALSE, message=FALSE}
-df <- read_csv("data/joined_final_clean.csv")
+df <- read_csv("data/full_11_May_version.csv")
 #colnames(df)
 ```
 
 У нас **7610 грантов** за 2014-2019 годы. 
 
-В РИНЦе нет 52 организаций, которые получали гранты РНФ (всего 97 гратнтов из 7610 мы далее выбросим из анализа). 
+В РИНЦе нет 23 организации, которые получали гранты РНФ (всего 33 гратнта из 7610 мы далее выбросим из анализа). 
 
 Что мы хотимс посмотреть:
 
@@ -42,7 +42,7 @@ df <- read_csv("data/joined_final_clean.csv")
 
 ```{r warning=FALSE, message=FALSE}
 
-rf <- df %>% mutate(Uni = gsub('"', '', Uni)) %>% group_by(id,Uni) %>% count()
+rf <- df %>% mutate(Univ = gsub('"', '', Univ)) %>% group_by(id,Univ) %>% count()
 colnames(rf)[1] <- "id по РИНЦ" 
 rf <- formattable(rf)
 as.datatable(rf)
@@ -93,7 +93,7 @@ nl <- df %>%
   mutate(N_pub_WOSSC5 = gsub("\\(.*","",N_pub_WOSSC5)) %>% 
   mutate(N_pub_WOSSC5 = as.numeric(N_pub_WOSSC5),
          N_pub_WOSSC5_persent = as.numeric(as.character(N_pub_WOSSC5_persent))) %>% 
-  mutate(Uni = gsub('"', '', Uni))
+  mutate(Univ = gsub('"', '', Univ))
 
 
 #nl <- nl %>% dplyr::filter(N_pub_WOSSC5 > 24) 
@@ -104,8 +104,8 @@ nl <- df %>%
 ```{r warning=FALSE, message=FALSE}
 options(digits = 3)
 h <- data.table::setDT(nl)[ , list(`доля классных публикаций` = 100*(N_pub_WOSSC5/(N_elibrary5+1)),
-                                   count_of_grants = .N), by = .(Uni)]
-h <- h %>% distinct(Uni, .keep_all = TRUE)
+                                   count_of_grants = .N), by = .(Univ)]
+h <- h %>% distinct(Univ, .keep_all = TRUE)
 h <- formattable(h)
 as.datatable(h)
 
@@ -135,3 +135,37 @@ as.datatable(rg)
 ```
 
 
+поиск ненайденных 52 штук
+
+```{r}
+#library(readr)
+#df52 <- read_delim("data/unknownKnown/топ ненайденых универов-Tаблица 1.csv", 
+#    ";", escape_double = FALSE, trim_ws = TRUE)
+
+#df52 <- df52 %>% select(1,3) 
+#colnames(df52)[2] <- "id"
+#df52 <- df52 %>% filter(id > 0) 
+#joined_final <- read_csv("data/joined_final.csv")
+#full_final_joined <- left_join(joined_final, df52, by = "Univ")
+#write.csv(full_final_joined, "full_final_joined.csv", fileEncoding = "UTF-8")
+#full_final_joined <- full_final_joined %>% select(-1,-2,-3,-12,-13)
+#dt <- left_join(full_final_joined, universities_full_and_russian_universities, by = "id")
+#d1 <- d1 %>% group_by(Univ) %>% count()
+#d2 <- dt %>% filter(is.na(page)) %>% group_by(Univ) %>% count()
+#dt <- dt %>% filter(!is.na(page))
+#write.csv(dt, "full_11_May_version.csv", fileEncoding = "UTF-8")
+```
+
+
+```{r}
+#library(readr)
+#joined_final <- read_csv("data/joined_final.csv")
+#joined_final_clean <- read_csv("data/joined_final_clean.csv")
+
+#unknown <- joined_final %>% filter(is.na(id)) %>% group_by(Univ) %>% count()
+#unknown2 <- joined_final %>% filter(is.na(id)) 
+
+#write.csv(unknown, "unknown.csv", fileEncoding = "UTF-8")
+#write.csv(unknown2, "unknown2.csv", fileEncoding = "UTF-8")
+```
+ 
