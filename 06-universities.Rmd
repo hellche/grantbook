@@ -10,6 +10,8 @@ library(formattable)
 library(plotrix)
 library(tidyr)
 library(readxl)
+library(stringr)
+library(ggplot2)
 ```
 
 
@@ -138,9 +140,233 @@ as.datatable(rg)
 ```
 
 
-поиск ненайденных 52 штук
+## Идеи от Михаила {-}
 
-```{r}
+
+1. Посмотреть как часто повторяются фамилии
+
+2. Кол-во гос организаций (РАН, гос вузы) vs. негосударственные (автономные): гранты как мертоновская "награда", эффект Матфея
+
+3. По областям фиксируют квоты?
+
+4. Динамика после 5:100
+
+
+### 1. Как часто повторяются фамилии {-}
+
+В таблице 5 пока первое приближение. Надо контролировать на "Конкурс на продление сроков" и тезок. Первое сделать проще, второе - сложнее. Например, Иванов Д. В. это скорее всего три разных человека судя по аффилиации и области знания. 
+
+###### Таблица 5. Число гранов у руководителей {-}
+```{r warning=FALSE, message=FALSE}
+library(readxl)
+df2 <- read_excel("data/allRSCF2020-1.xls", 
+    sheet = "Лист1")
+df2 <- df2 %>% dplyr::select(1,3,4,5,6,8,9,12,17,22,23)
+
+supervisirs <- df2 %>% group_by(ФИО) %>% dplyr::filter(!is.na(ФИО)) %>% count() %>% arrange(desc(n))
+supervisirs <- formattable(supervisirs)
+as.datatable(supervisirs)
+
+```
+
+Оставим группировку по ФИО, но посмотрим какие научные области прячутся внутри. Добавим к таблице 5 колонку с этой инфомацией.
+```{r warning=FALSE, message=FALSE}
+df3 <- df2 %>% dplyr::mutate(dummy = case_when(grepl("Конкурс на продление сроков", Конкурс) ~ 1,
+                                                TRUE   ~ 0)) 
+
+df3 <- df3 %>% dplyr::mutate(area = gsub("дополнительные.*","",main_code),
+                      area = gsub("основной:","",area),
+                      area = str_trim(area, side = "both"),
+                      area = gsub("-.*","",area),
+                      area = if_else(area == "нет", 'NA', area))
+
+
+f <- df3 %>% dplyr::select(3, 13) %>% dplyr::filter(!is.na(ФИО)) %>% 
+  group_by(ФИО) %>%  arrange(area) %>% 
+  summarise(area = paste(area, collapse = ", "))
+
+
+f <- left_join(f, supervisirs, by = "ФИО") 
+f <- arrange(f, desc(n))
+f  <- formattable(f)
+as.datatable(f)
+
+```
+
+Предположительно мы сразу видем тезок в первой десятке, разобъем их.
+
+
+```{r warning=FALSE, message=FALSE}
+autors<- df3 %>% dplyr::select(3, 13) %>% dplyr::filter(!is.na(ФИО)) %>% 
+  group_by(ФИО, area) %>% count() %>%  arrange(desc(n)) 
+autors  <- formattable(autors)
+as.datatable(autors)
+```
+
+Иванов К. Л. видимо всё еще два человека, которые оба получили гранты в области 03 - Химия (?). Если нужно, то можно еще более детально разбить - с учетом аффилиации руководителя проекта. 
+
+Но для начала  проконтролируем на "Конкурс на продление сроков", чтобы понять кто получил несколько независимых друг от друга грантов. В выборке есть 902 гранта по "Конкурсу на продление сроков". Уберем их.
+
+
+```{r warning=FALSE, message=FALSE}
+autors<- df3 %>% 
+  dplyr::filter(!is.na(ФИО)) %>% 
+  dplyr::filter(dummy == 0) %>% 
+  dplyr::select(3, 13) %>% 
+  group_by(ФИО, area) %>% count() %>%  arrange(desc(n)) 
+autors  <- formattable(autors)
+as.datatable(autors)
+```
+
+Таким образом, мы убрали все "продления" грантов, попытались раскидать тезок через области знания, и получили следующую картину (см. таблицу ниже). У нас 714  руководителей получали грант дважды (это ~ 12 %). Кончечно там тоже могут прятаться тезки, которые кроме одинаковых ФИО еще имеют одинаковые научные области. Уникум у нас видимо только Ремесленников В. Н. и один из Ивановых К. Л., которые получали гранты трижды (и это не считая продлений).
+
+```{r warning=FALSE, message=FALSE}
+v <- autors %>% group_by(n) %>% count()
+colnames(v)[1] <- "Число грантов (без продлений)" 
+colnames(v)[2] <- "Руклводителей грантов" 
+knitr::kable(v , booktabs = T) %>%
+ kable_styling(bootstrap_options = "striped", full_width = F)
+```
+
+### 2. Гос организаций  vs. негос {-}
+
+Вернулись к выборке из 7577 грантов (у которых нашлась организация в РИНЦе). Сделаем дамми для гос организаций (помимо всяких федеральных бла-бла, бюджетных бла-бла, мы туда добавили акционерные общества при гос учреждениях, например, Акционерное общество Государственный оптический институт или Акционерное общество Государственный научно-исследовательский и проектный институт редкометаллической промышленности). Вот что получилось (не забудь поправить NA, засунуть в гос организации, это ИНСТИТУТ МОНГОЛОВЕДЕНИЯ, БУДДОЛОГИИ И ТИБЕТОЛОГИИ СО РАН Улан-Удэ). 
+
+```{r warning=FALSE, message=FALSE}
+
+#for_save2 <- df %>% group_by(Univers) %>% count()
+#write.csv(for_save2, "for_save2.csv", fileEncoding = "UTF-8")
+
+library(readr)
+for_save2 <- read_delim("data/for_save2.csv", ";", escape_double = FALSE, trim_ws = TRUE)
+for_save2 <- for_save2 %>% dplyr::select(2,4)
+data <- left_join(df, for_save2, by = "Univers")
+data1 <- data %>% 
+  dplyr::select(2,3,4,6,7,9,613)
+J <- data1 %>% group_by(gov) %>% count()
+
+knitr::kable(J, booktabs = T) %>%
+ kable_styling(bootstrap_options = "striped", full_width = F)
+
+
+```
+
+Из всех 7577 грантов, только 162 (~2 %) ушло негосударственным организациям. Посмотрим кто у нас получил эти 162 гранта и что за негосударственные организации там прячутся.
+
+
+```{r warning=FALSE, message=FALSE}
+
+g <- data1 %>% dplyr::filter(gov ==0) %>% group_by(Univ) %>% count()
+g  <- formattable(g)
+g <- g %>% arrange(desc(n))
+as.datatable(g)
+```
+
+Всего 162 гратна распределились между 27 негосударственнми организациями. Возможно я тут зря кого-то из них не отнесла к государтвеннми, но если что, поправлю.
+Я если честно не знаю какой вывод тут деалть, много это или мало, что только 2 % грантов уходит негосударственным организациям. Если бы у нас тут были только вузы, мы бы посмотрели генеральную совокупность всех вузов в России, обнаружили, что из, допустим 1500 вузов россии 90 % - государственны + их филиалы, а 10 % негосудартственные. Тогда бы мы сказали, смотрите, негосударственных вузов 10 %, а грантов они получают только 2%. Но мы так не можем сделать, так как львиная доля всех грантов у нас уходит во всевозможные подразделения РАН. Короче не знаю, надо думать.  
+
+
+### 3. По областям фиксируют квоты? {-}
+
+Уберем NA (у нас есть 14 грантов у которых нет кода области). Остается 7596 гратнов за 2014-2019 гг. Посмотрим по годам и областям знания.
+
+```{r warning=FALSE, message=FALSE}
+
+quots <- df3 %>% dplyr::filter(!is.na(area)) %>%
+  dplyr::filter(area != 'NA') %>% 
+  group_by(Год, area) %>% count()
+
+library(tidyr)
+ar_ye <- spread(quots, key = Год, value = n)
+knitr::kable(ar_ye , booktabs = T) %>%
+ kable_styling(bootstrap_options = "striped", full_width = F)
+```
+
+Это гранты в штуках, пересчитаем в долях. 
+
+```{r warning=FALSE, message=FALSE}
+
+#ar_ye2 <- spread(quots, key = area, value = n)
+
+sum2014 <- sum(ar_ye$`2014`)
+sum2015 <- sum(ar_ye$`2015`)
+sum2016 <- sum(ar_ye$`2016`)
+sum2017 <- sum(ar_ye$`2017`)
+sum2018 <- sum(ar_ye$`2018`)
+sum2019 <- sum(ar_ye$`2019`)
+
+ar_ye2 <- ar_ye %>% 
+  mutate(sh_2014 = `2014`/sum2014*100) %>% 
+  mutate(sh_2015 = `2015`/sum2015*100) %>% 
+  mutate(sh_2016 = `2016`/sum2016*100) %>% 
+  mutate(sh_2017 = `2017`/sum2017*100) %>% 
+  mutate(sh_2018 = `2018`/sum2018*100) %>% 
+  mutate(sh_2019 = `2019`/sum2019*100) %>% 
+  dplyr::select(1, starts_with("sh_"))
+options(digits = 2)
+ar_ye2  <- formattable(ar_ye2)
+as.datatable(ar_ye2)
+
+
+```
+
+```{r warning=FALSE, message=FALSE}
+
+ar_ye3 <- gather(ar_ye2, condition, measurement, sh_2014:sh_2019, factor_key=TRUE)
+ar_ye3 <- ar_ye3 %>% mutate(condition = gsub("[^0-9.-]+", "", condition))
+ar_ye3$condition = as.numeric(as.character(ar_ye3$condition))
+ar_ye4 <- ar_ye3
+ar_ye3$area[ar_ye3$area == "01"] <- "01 - математика"
+ar_ye3$area[ar_ye3$area == "02"] <- "02 - физика"
+ar_ye3$area[ar_ye3$area == "03"] <- "03 - химия"
+ar_ye3$area[ar_ye3$area == "04"] <- "04 - биология"
+ar_ye3$area[ar_ye3$area == "05"] <- "05 - медицина"
+ar_ye3$area[ar_ye3$area == "06"] <- "06 - с/х"
+ar_ye3$area[ar_ye3$area == "07"] <- "07 - науки о земле"
+ar_ye3$area[ar_ye3$area == "08"] <- "08 - гум и соц"
+ar_ye3$area[ar_ye3$area == "09"] <- "09 - инженерия"
+
+```
+
+
+```{r eval=FALSE}
+ggplot(ar_ye3, aes(x = condition, y = measurement, fill = area)) +
+  geom_area(position = position_fill()) +
+  scale_y_continuous(labels = scales::percent) 
+
+```
+
+```{r warning=FALSE, message=FALSE}
+ar_ye3$area2 <- factor(ar_ye3$area, levels = c('06 - с/х', 
+                                               '07 - науки о земле', 
+                                               '01 - математика',
+                                               '05 - медицина',
+                                               '08 - гум и соц',
+                                               '04 - биология',
+                                               '02 - физика',
+                                               '09 - инженерия', 
+                                               '03 - химия'))
+
+ggplot(ar_ye3, aes(x = condition, y = measurement, fill = area2)) +
+  geom_area(position = position_fill(), linetype = 1, size =1 ,colour="black" ) +
+  scale_y_continuous(labels = scales::percent) 
+
+
+```
+
+
+```{r warning=FALSE, message=FALSE}
+
+ggplot(ar_ye3) +
+  geom_line(aes(x = condition, y = measurement, colour = area)) +facet_wrap(~ area)
+```
+
+
+```{r eval=FALSE}
+
+# ПОДВАЛ
+
+#поиск ненайденных 52 штук
 #library(readr)
 #df52 <- read_delim("data/unknownKnown/топ ненайденых универов-Tаблица 1.csv", 
 #    ";", escape_double = FALSE, trim_ws = TRUE)
@@ -160,7 +386,7 @@ as.datatable(rg)
 ```
 
 
-```{r}
+```{r eval=FALSE}
 #library(readr)
 #joined_final <- read_csv("data/joined_final.csv")
 #joined_final_clean <- read_csv("data/joined_final_clean.csv")
