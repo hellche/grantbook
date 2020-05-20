@@ -348,7 +348,7 @@ knitr::kable(S, booktabs = T) %>%
 
 У нас Иннополлис и Институт программных систем попали не туда, поправим их.
 
-```{r eval=FALSE}
+```{r warning=FALSE, message=FALSE}
 data_f <- data_f %>% 
   dplyr::mutate(private = case_when(id == "14346" ~ 1,
                                     id == "668" ~ NA_real_,
