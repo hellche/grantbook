@@ -346,6 +346,14 @@ knitr::kable(S, booktabs = T) %>%
 
 <span style="background-color: #ff99dd">  Вузы за 2014-2019 получили 44 % грантов РНФ. Причем частные вузы получили только 1 % всех грантов. Составим рейтинги организаций этих трех типов. </span>
 
+У нас Иннополлис и Институт программных систем попали не туда, поправим их.
+
+```{r eval=FALSE}
+data_f <- data_f %>% 
+  dplyr::mutate(private = case_when(id == "14346" ~ 1,
+                                    id == "668" ~ NA_real_,
+                                    TRUE   ~  private)) 
+```
 
 ##### Таблица 11 в. Гос вузы и их гранты{-}
 ```{r warning=FALSE, message=FALSE}
